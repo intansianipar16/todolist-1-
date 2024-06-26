@@ -1,7 +1,13 @@
 import streamlit as st
 import requests
+from dotenv import load_dotenv
+import os
 
-BASE_URL = 'https://68cb-103-82-14-56.ngrok-free.app/tasks'
+# Memuat variabel lingkungan dari file .env
+load_dotenv()
+
+# Mendapatkan nilai BASE_URL dari variabel lingkungan
+BASE_URL = 'https://788f-103-82-14-56.ngrok-free.app/tasks' if os.getenv("BASE_URL") is None else os.getenv("BASE_URL")
 
 def get_tasks():
     response = requests.get(BASE_URL)
